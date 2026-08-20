@@ -10,6 +10,10 @@ highlights, text, face cam, and up to 4K export.
 
 *Local-first · Native macOS · Original-quality sources*
 
+<br>
+<img width="1463" height="595" alt="image" src="https://github.com/user-attachments/assets/a843bfaf-304e-4f1d-8410-738ae72fda4f" />
+<br>
+
 Website: [recordnow.s41r4j.in](https://recordnow.s41r4j.in/) (served from
 `index.html` in this repo) · [Download the latest release](https://github.com/s41r4j/recordnow/releases/latest)
 
@@ -94,5 +98,7 @@ Homebrew tap) will appear under
 pipeline is in place.
 
 ---
+
+<img width="1475" height="582" alt="image" src="https://github.com/user-attachments/assets/807d04b7-e10d-4e47-823f-6190c396740d" />
 
 © 2026 Record Now. Native macOS screen recording.
