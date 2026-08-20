@@ -7,11 +7,11 @@
   <meta name="description" content="Record Now is a native macOS screen recorder with selection-based editing, 4K capture, blur tools, and a minimal professional workflow.">
   <link rel="canonical" href="https://recordnow.s41r4j.in/">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Record Now | Native screen recording, selective editing">
+  <meta property="og:title" content="Record Now | Record naturally Edit selectively">
   <meta property="og:description" content="Native macOS screen recording with selection-based speed, zoom, blur, highlights, text, face cam, and up to 4K export.">
   <meta property="og:url" content="https://recordnow.s41r4j.in/">
   <meta name="twitter:card" content="summary">
-  <title>Record Now | Native screen recording, selective editing</title>
+  <title>Record Now | Record naturally Edit selectively</title>
   <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTQiIGZpbGw9IiMwODA4MDgiLz48Y2lyY2xlIGN4PSIzMiIgY3k9IjMyIiByPSIxNSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmY0NTNhIiBzdHJva2Utd2lkdGg9IjUiLz48Y2lyY2xlIGN4PSIzMiIgY3k9IjMyIiByPSI3IiBmaWxsPSIjZmY0NTNhIi8+PC9zdmc+">
   <script type="application/ld+json">
   {
@@ -536,6 +536,7 @@
           <a href="#features">Features</a>
           <a href="#selection">Selection</a>
           <a href="#workflow">Workflow</a>
+          <a href="#automation">Automation</a>
           <a href="#quality">Quality</a>
           <a class="nav-cta latest-release-link" href="https://github.com/s41r4j/homebrew-recordnow/releases/latest" data-download-release rel="noopener">Download</a>
         </div>
@@ -747,6 +748,25 @@
             <p>Preview the final composition, then export in a clean delivery format with support for original resolution and up to 4K output.</p>
           </article>
         </div>
+      </div>
+    </section>
+
+    <section id="automation">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="eyebrow">Automation</div>
+          <div>
+            <h2>A headless CLI for scripts and AI agents</h2>
+            <p>recordnow-cli reads and writes the exact same project files the app does, so a script or an AI agent can inspect notes, apply edits, and export, all from the command line, through the same validated logic the app itself uses.</p>
+          </div>
+        </div>
+
+        <dl class="specs">
+          <div class="spec"><dt>Install</dt><dd><code>brew install s41r4j/recordnow/recordnow-cli</code></dd></div>
+          <div class="spec"><dt>Run as</dt><dd><code>recordnow &lt;command&gt; project.rnproject</code></dd></div>
+          <div class="spec"><dt>Covers</dt><dd>Inspecting notes, applying and updating edits, exporting, and project settings, everything persisted in a project file.</dd></div>
+          <div class="spec"><dt>Does not cover</dt><dd>Screen, camera, and microphone recording, live preview, and permission prompts stay in the GUI app (the Homebrew Cask), since macOS grants those only to a signed, launched application.</dd></div>
+        </dl>
       </div>
     </section>
 

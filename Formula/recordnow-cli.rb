@@ -7,11 +7,14 @@ class RecordnowCli < Formula
 
   depends_on macos: ">= :sequoia"
 
+  # Installed as `recordnow` on PATH, not `recordnow-cli` — the shorter name
+  # is what scripts and AI agents actually type; the package/tarball keep
+  # the longer name since that's what disambiguates it from the Cask.
   def install
-    bin.install "recordnow-cli"
+    bin.install "recordnow-cli" => "recordnow"
   end
 
   test do
-    assert_match "recordnow-cli", shell_output("#{bin}/recordnow-cli --help")
+    assert_match "recordnow-cli", shell_output("#{bin}/recordnow --help")
   end
 end
