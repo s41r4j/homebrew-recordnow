@@ -13,6 +13,25 @@
   <meta name="twitter:card" content="summary">
   <title>Record Now | Native screen recording, selective editing</title>
   <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTQiIGZpbGw9IiMwODA4MDgiLz48Y2lyY2xlIGN4PSIzMiIgY3k9IjMyIiByPSIxNSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmY0NTNhIiBzdHJva2Utd2lkdGg9IjUiLz48Y2lyY2xlIGN4PSIzMiIgY3k9IjMyIiByPSI3IiBmaWxsPSIjZmY0NTNhIi8+PC9zdmc+">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Record Now",
+    "operatingSystem": "macOS",
+    "applicationCategory": "MultimediaApplication",
+    "description": "Record Now is a native macOS screen recorder with selection-based editing, 4K capture, blur tools, and a minimal professional workflow.",
+    "url": "https://recordnow.s41r4j.in/",
+    "downloadUrl": "https://github.com/s41r4j/homebrew-recordnow/releases/latest",
+    "softwareVersion": "0.1.0",
+    "releaseNotes": "https://github.com/s41r4j/homebrew-recordnow/releases",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
   <style>
     :root{
       --bg:#090909;
@@ -518,7 +537,7 @@
           <a href="#selection">Selection</a>
           <a href="#workflow">Workflow</a>
           <a href="#quality">Quality</a>
-          <a class="nav-cta latest-release-link" href="https://github.com/s41r4j/recordnow/releases/latest" data-download-release rel="noopener">Download</a>
+          <a class="nav-cta latest-release-link" href="https://github.com/s41r4j/homebrew-recordnow/releases/latest" data-download-release rel="noopener">Download</a>
         </div>
       </nav>
     </div>
@@ -539,10 +558,11 @@
         <div class="hero-right">
           <p>A native macOS recorder for creators who need 4K quality without inheriting an entire video-editing suite.</p>
           <div class="actions">
-            <a class="btn primary latest-release-link" href="https://github.com/s41r4j/recordnow/releases/latest" data-download-release rel="noopener">Download for macOS</a>
+            <a class="btn primary latest-release-link" href="https://github.com/s41r4j/homebrew-recordnow/releases/latest" data-download-release rel="noopener">Download for macOS</a>
             <a class="btn" href="#features">See how it works</a>
           </div>
           <div class="hero-microcopy">Local-first · Native macOS · Original-quality sources</div>
+          <div class="hero-microcopy" id="versionBadge" style="margin-top:8px">v0.1.0 · Alpha</div>
         </div>
       </div>
 
@@ -763,8 +783,12 @@
           <h2>Focused recording, selective editing, native quality</h2>
           <p>Built for tutorials, demos, technical walkthroughs, and anyone who wants to ship content without drowning in repetitive editing work.</p>
           <div class="download-actions">
-            <a class="btn primary latest-release-link" href="https://github.com/s41r4j/recordnow/releases/latest" data-download-release rel="noopener">Download for macOS</a>
+            <a class="btn primary latest-release-link" href="https://github.com/s41r4j/homebrew-recordnow/releases/latest" data-download-release rel="noopener">Download for macOS</a>
             <a class="btn" href="#features">View feature set</a>
+          </div>
+          <div class="hero-microcopy" style="margin-top:18px">
+            Or via Homebrew:
+            <code style="color:var(--text);background:rgba(255,255,255,.06);padding:2px 7px;border-radius:4px">brew install --cask s41r4j/recordnow/recordnow</code>
           </div>
         </div>
         <div class="final-side reveal">
@@ -925,8 +949,8 @@
     // Always point download CTAs at the newest public GitHub release.
     // If a downloadable macOS asset is available, prefer it; otherwise
     // fall back to GitHub's stable /releases/latest redirect.
-    const releaseFallback = 'https://github.com/s41r4j/recordnow/releases/latest';
-    const releaseApi = 'https://api.github.com/repos/s41r4j/recordnow/releases/latest';
+    const releaseFallback = 'https://github.com/s41r4j/homebrew-recordnow/releases/latest';
+    const releaseApi = 'https://api.github.com/repos/s41r4j/homebrew-recordnow/releases/latest';
     const downloadLinks = [...document.querySelectorAll('[data-download-release]')];
 
     function scoreAsset(asset) {
@@ -969,6 +993,9 @@
           link.title = `Download Record Now ${version}`;
           link.setAttribute('aria-label', `Download Record Now ${version} for macOS`);
         });
+
+        const badge = document.getElementById('versionBadge');
+        if (badge) badge.textContent = `${version} · Alpha`;
       } catch (error) {
         // The fallback URL remains valid and will redirect to the latest release
         // whenever the repository has a public release.

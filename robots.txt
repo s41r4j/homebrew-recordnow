@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://recordnow.s41r4j.in/sitemap.xml

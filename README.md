@@ -14,8 +14,10 @@ highlights, text, face cam, and up to 4K export.
 <img width="1463" height="595" alt="image" src="https://github.com/user-attachments/assets/a843bfaf-304e-4f1d-8410-738ae72fda4f" />
 <br>
 
+*v0.1.0 · Alpha*
+
 Website: [recordnow.s41r4j.in](https://recordnow.s41r4j.in/) (served from
-`index.html` in this repo) · [Download the latest release](https://github.com/s41r4j/recordnow/releases/latest)
+`index.html` in this repo) · [Download the latest release](https://github.com/s41r4j/homebrew-recordnow/releases/latest)
 
 <br><br>
 
@@ -92,10 +94,15 @@ full-editor complexity.
 
 ## Downloads
 
-Release assets (a `RecordNow-X.Y.Z.zip`, checksums, and eventually a
-Homebrew tap) will appear under
-[Releases](https://github.com/s41r4j/recordnow/releases) once the release
-pipeline is in place.
+```sh
+brew install --cask s41r4j/recordnow/recordnow      # the app
+brew install s41r4j/recordnow/recordnow-cli         # headless automation CLI
+```
+
+Or grab a `.dmg`, `.zip`, or the CLI's `.tar.gz` directly from
+[Releases](https://github.com/s41r4j/homebrew-recordnow/releases). This repo
+is itself the Homebrew tap: `Casks/recordnow.rb` and
+`Formula/recordnow-cli.rb` are updated automatically with each release.
 
 ---
 
