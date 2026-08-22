@@ -127,8 +127,8 @@
     .info-btn:hover{background:rgba(255,180,84,.15);border-color:rgba(255,180,84,.6)}
     .info-btn[aria-expanded="true"]{background:rgba(255,180,84,.18);border-color:rgba(255,180,84,.7)}
     .info-popover{
-      position:absolute;top:calc(100% + 10px);left:0;z-index:60;
-      width:min(360px,calc(100vw - 48px));
+      position:absolute;top:calc(100% + 10px);right:0;z-index:60;
+      width:min(320px,calc(100vw - 48px));
       background:#131315;border:1px solid var(--line);border-radius:10px;
       padding:16px 18px;box-shadow:0 20px 48px rgba(0,0,0,.55);
       font-size:13px;line-height:1.65;color:var(--soft);
@@ -602,24 +602,6 @@
           <div class="actions">
             <a class="btn primary latest-release-link" href="https://github.com/s41r4j/homebrew-recordnow/releases/latest" data-download-release rel="noopener">Download for macOS</a>
             <a class="btn" href="#features">See how it works</a>
-            <div class="info-wrap">
-              <button class="info-btn" type="button" id="notarizeInfoBtn" aria-expanded="false" aria-controls="notarizePopover" aria-label="Important information about this download">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"/>
-                  <line x1="12" y1="9" x2="12" y2="13"/>
-                  <line x1="12" y1="17" x2="12.01" y2="17"/>
-                </svg>
-              </button>
-              <div class="info-popover" id="notarizePopover" role="dialog" aria-label="Unsigned build information" hidden>
-                <strong>Not notarized by Apple yet</strong>
-                That costs $99/year and this project isn't paying it right now, so macOS will
-                flag the app as unidentified on first launch. If you trust it: right-click the
-                app → <strong style="display:inline;margin:0">Open</strong>, or run
-                <code>xattr -d com.apple.quarantine "/Applications/Record Now.app"</code>
-                in Terminal. Nothing illegal going on — it's a free tool, just an unsigned build
-                for now.
-              </div>
-            </div>
           </div>
           <div class="hero-microcopy">Local-first · Native macOS · Original-quality sources</div>
           <div class="hero-microcopy" id="versionBadge" style="margin-top:8px">v0.1.0 · Alpha</div>
@@ -628,6 +610,25 @@
           <div class="cmd-row" style="margin-top:8px">
             <code>brew install --cask s41r4j/recordnow/recordnow</code>
             <button class="copy-btn" type="button" data-copy="brew install --cask s41r4j/recordnow/recordnow">Copy</button>
+          </div>
+          <div class="cmd-row" style="margin-top:8px">
+            <code>xattr -d com.apple.quarantine "/Applications/Record Now.app"</code>
+            <button class="copy-btn" type="button" data-copy="xattr -d com.apple.quarantine &quot;/Applications/Record Now.app&quot;">Copy</button>
+            <div class="info-wrap">
+              <button class="info-btn" type="button" id="notarizeInfoBtn" aria-expanded="false" aria-controls="notarizePopover" aria-label="Why this command is needed">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"/>
+                  <line x1="12" y1="9" x2="12" y2="13"/>
+                  <line x1="12" y1="17" x2="12.01" y2="17"/>
+                </svg>
+              </button>
+              <div class="info-popover" id="notarizePopover" role="dialog" aria-label="Why this command is needed" hidden>
+                <strong>Not notarized by Apple yet</strong>
+                Notarization costs $99 a year, and this project isn't paying it right now. Without it, macOS flags the app as unidentified on first launch, for both the direct download and the Homebrew install above.
+                The command runs after install and clears that flag. Alternatively, right-click the app and choose <strong style="display:inline;margin:0">Open</strong>.
+                It's a free, unsigned build, nothing more.
+              </div>
+            </div>
           </div>
         </div>
       </div>
