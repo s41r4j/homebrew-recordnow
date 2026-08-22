@@ -116,8 +116,28 @@
     }
     .copy-btn:hover{color:var(--text);border-color:rgba(255,255,255,.26);background:rgba(255,255,255,.06)}
     .copy-btn.copied{color:#8fe3a3;border-color:rgba(143,227,163,.45)}
-    .bypass-note{margin-top:14px;max-width:520px;color:var(--soft);font-size:13px;line-height:1.65}
-    .bypass-note strong{color:var(--muted);font-weight:600}
+
+    .info-wrap{position:relative;display:inline-flex;align-items:center}
+    .info-btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      width:34px;height:34px;border-radius:50%;flex:0 0 auto;
+      border:1px solid rgba(255,180,84,.4);background:rgba(255,180,84,.08);color:#ffb454;
+      cursor:pointer;transition:.15s ease;
+    }
+    .info-btn:hover{background:rgba(255,180,84,.15);border-color:rgba(255,180,84,.6)}
+    .info-btn[aria-expanded="true"]{background:rgba(255,180,84,.18);border-color:rgba(255,180,84,.7)}
+    .info-popover{
+      position:absolute;top:calc(100% + 10px);left:0;z-index:60;
+      width:min(360px,calc(100vw - 48px));
+      background:#131315;border:1px solid var(--line);border-radius:10px;
+      padding:16px 18px;box-shadow:0 20px 48px rgba(0,0,0,.55);
+      font-size:13px;line-height:1.65;color:var(--soft);
+      opacity:0;transform:translateY(4px);pointer-events:none;
+      transition:opacity .15s ease,transform .15s ease;
+    }
+    .info-popover.open{opacity:1;transform:translateY(0);pointer-events:auto}
+    .info-popover strong{display:block;margin-bottom:6px;color:var(--muted);font-size:13px;font-weight:650}
+    .info-popover code{font-size:11.5px}
 
     .btn{
       display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 18px;
@@ -582,6 +602,24 @@
           <div class="actions">
             <a class="btn primary latest-release-link" href="https://github.com/s41r4j/homebrew-recordnow/releases/latest" data-download-release rel="noopener">Download for macOS</a>
             <a class="btn" href="#features">See how it works</a>
+            <div class="info-wrap">
+              <button class="info-btn" type="button" id="notarizeInfoBtn" aria-expanded="false" aria-controls="notarizePopover" aria-label="Important information about this download">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"/>
+                  <line x1="12" y1="9" x2="12" y2="13"/>
+                  <line x1="12" y1="17" x2="12.01" y2="17"/>
+                </svg>
+              </button>
+              <div class="info-popover" id="notarizePopover" role="dialog" aria-label="Unsigned build information" hidden>
+                <strong>Not notarized by Apple yet</strong>
+                That costs $99/year and this project isn't paying it right now, so macOS will
+                flag the app as unidentified on first launch. If you trust it: right-click the
+                app → <strong style="display:inline;margin:0">Open</strong>, or run
+                <code>xattr -d com.apple.quarantine "/Applications/Record Now.app"</code>
+                in Terminal. Nothing illegal going on — it's a free tool, just an unsigned build
+                for now.
+              </div>
+            </div>
           </div>
           <div class="hero-microcopy">Local-first · Native macOS · Original-quality sources</div>
           <div class="hero-microcopy" id="versionBadge" style="margin-top:8px">v0.1.0 · Alpha</div>
@@ -591,15 +629,6 @@
             <code>brew install --cask s41r4j/recordnow/recordnow</code>
             <button class="copy-btn" type="button" data-copy="brew install --cask s41r4j/recordnow/recordnow">Copy</button>
           </div>
-
-          <p class="bypass-note">
-            <strong>Not notarized by Apple yet</strong> — that costs $99/year and this project
-            isn't paying it right now, so macOS will flag the app as unidentified on first
-            launch. If you trust it: right-click the app → <strong>Open</strong>, or run
-            <code style="font-size:12px">xattr -d com.apple.quarantine "/Applications/Record Now.app"</code>
-            in Terminal. Nothing illegal going on — it's a free tool, just an unsigned build
-            for now.
-          </p>
         </div>
       </div>
 
@@ -1078,6 +1107,30 @@
         }).catch(() => {});
       });
     });
+
+    // Notarization notice: a warning icon that reveals its detail in a
+    // small popover, instead of a permanent paragraph in the hero.
+    const notarizeBtn = document.getElementById('notarizeInfoBtn');
+    const notarizePopover = document.getElementById('notarizePopover');
+    if (notarizeBtn && notarizePopover) {
+      const setOpen = open => {
+        notarizePopover.classList.toggle('open', open);
+        notarizePopover.hidden = !open;
+        notarizeBtn.setAttribute('aria-expanded', String(open));
+      };
+      notarizeBtn.addEventListener('click', event => {
+        event.stopPropagation();
+        setOpen(!notarizePopover.classList.contains('open'));
+      });
+      document.addEventListener('click', event => {
+        if (!notarizePopover.contains(event.target) && event.target !== notarizeBtn) {
+          setOpen(false);
+        }
+      });
+      document.addEventListener('keydown', event => {
+        if (event.key === 'Escape') setOpen(false);
+      });
+    }
   </script>
 </body>
 </html>
