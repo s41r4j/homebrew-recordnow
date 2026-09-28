@@ -1,6 +1,6 @@
 cask "recordnow" do
-  version "0.0.1"
-  sha256 "b44c262028a081b02a43eb915579df3ba823859ce9ced0d0e059f4c13c805de7"
+  version "0.1.0"
+  sha256 "07484b43757685fcb6ea4256d008137deadaf56f2ef8ce18a093c32bb5f30f87"
 
   url "https://github.com/s41r4j/homebrew-recordnow/releases/download/v#{version}/RecordNow-#{version}.zip"
   name "Record Now"

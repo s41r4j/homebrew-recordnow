@@ -1,9 +1,9 @@
 class RecordnowCli < Formula
   desc "Headless automation interface for Record Now projects"
   homepage "https://recordnow.s41r4j.in/"
-  url "https://github.com/s41r4j/homebrew-recordnow/releases/download/v0.0.1/recordnow-cli-0.0.1-arm64.tar.gz"
-  sha256 "bbd2c218081ef31ad2759b757feab5bb499f45f903e56b46cfdd976d3e998e3b"
-  version "0.0.1"
+  url "https://github.com/s41r4j/homebrew-recordnow/releases/download/v0.1.0/recordnow-cli-0.1.0-arm64.tar.gz"
+  sha256 "098eeec2ad15be576e27e418f32d97c8f70083ccb64f6a9800de60d1d743c150"
+  version "0.1.0"
 
   depends_on macos: ">= :sequoia"
 
